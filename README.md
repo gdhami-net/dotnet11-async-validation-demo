@@ -18,8 +18,8 @@ validation attribute, and the tests that show where that check stops being enoug
   - with the index and no `catch`, the second gets an unhandled `DbUpdateException`, a 500;
   - with the `catch` in `Program.cs`, the second gets the same 400 body as the validation
     error (compared with `traceId` removed).
-- Async attributes on one model run at the same time (two 100 ms checks finish in about
-  110 ms). Two checks that share the request's scoped `DbContext` throw
+- Async attributes on one model run at the same time (two 100 ms checks finish in a little
+  over 100 ms). Two checks that share the request's scoped `DbContext` throw
   "A second operation was started on this context instance" once each query takes real
   time. Opening a context per check from `IDbContextFactory<AppDb>` fixes it.
 - The `IAsyncValidatableObject` version of the check gives the same field error, and only

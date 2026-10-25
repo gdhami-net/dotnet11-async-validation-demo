@@ -23,7 +23,7 @@ public class SharedDbContextTests(ITestOutputHelper output)
         using var factory = new SignUpFactory();
         var client = factory.CreateClient();
 
-        for (var i = 0; i < 20; i++)
+        for (var i = 0; i < 50; i++)
             Assert.Equal(HttpStatusCode.OK, (await Post(client, "/experiments/scoped-db", i)).StatusCode);
     }
 
